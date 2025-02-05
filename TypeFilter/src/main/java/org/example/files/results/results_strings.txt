@@ -1,0 +1,14 @@
+TextString
+152,254
+1_000_000_000
+_TEXT_
+DIE
+EASY_PROJECT
+'
+"IDEA"
+'A'
+qwerty
+emergency
+This is text string
+This is not integer
+This is not float
