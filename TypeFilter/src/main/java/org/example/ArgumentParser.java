@@ -6,11 +6,11 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 public class ArgumentParser {
-    private final List<Path> inputPaths = new ArrayList<>();
+    private final Set<Path> inputPaths = new HashSet<>();
     private Path outputPath = Paths.get("src/main/java/org/example/files/results");
     private String prefix = "";
     private boolean appendMode = false;
@@ -104,7 +104,7 @@ public class ArgumentParser {
         };
     }
 
-    public List<Path> getInputPaths() {
+    public Set<Path> getInputPaths() {
         return inputPaths;
     }
 
