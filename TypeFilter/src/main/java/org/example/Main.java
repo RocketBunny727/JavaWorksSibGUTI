@@ -12,7 +12,12 @@ public class Main {
                 """;
         System.out.println(greeting);
 
-        DataProcessor processor = new DataProcessor();
-        processor.filterFiles(args);
+        ArgumentParser argumentParser = new ArgumentParser();
+        FileService fileService = new FileService();
+        DataClassifier dataClassifier = new DataClassifier();
+        StatisticsPrinter printer = new StatisticsPrinter();
+        DataProcessor processor = new DataProcessor(argumentParser, fileService, dataClassifier, printer);
+
+        processor.process(args);
     }
 }

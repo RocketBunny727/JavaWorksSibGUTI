@@ -12,3 +12,5 @@ emergency
 This is text string
 This is not integer
 This is not float
+hello world!
+qwerty
