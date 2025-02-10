@@ -1,0 +1,26 @@
+12154
+TextString
+12.58
+152,254
+0000001
+1_000_000_000
+_TEXT_
+DIE
+EASY_PROJECT
+42548
+234.2544
+242
+0000000
+"IDEA"
+'A'
+qwerty
+58425
+515.20
+0.41
+215
+emergency
+This is text string
+This is not integer
+This is not float
+21545
+2.3
