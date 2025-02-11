@@ -11,7 +11,7 @@ import java.util.Set;
 
 public class ArgumentParser {
     private final Set<Path> inputPaths = new HashSet<>();
-    private Path outputPath = Paths.get("src/main/java/org/example/files/results");
+    private Path outputPath = Paths.get("files/results");
     private String prefix = "";
     private boolean appendMode = false;
     private boolean isOutMode = false;
@@ -114,6 +114,10 @@ public class ArgumentParser {
 
     public String getPrefix() {
         return prefix;
+    }
+
+    public boolean isPrefixMode() {
+        return isPrefixMode;
     }
 
     public boolean isAppendMode() {

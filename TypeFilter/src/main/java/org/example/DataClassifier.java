@@ -45,7 +45,7 @@ public class DataClassifier {
         } catch (NumberFormatException ignored) {}
 
         try {
-            float floatValue = Float.parseFloat(line);
+            double floatValue = Double.parseDouble(line);
 
             floatCount++;
             floatSum += floatValue;
