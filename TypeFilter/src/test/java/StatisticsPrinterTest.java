@@ -20,12 +20,12 @@ public class StatisticsPrinterTest {
     void setUp() {
         printer = new StatisticsPrinter();
         classifier = new DataClassifier();
+        classifier.classifyData(lines);
         System.setOut(new PrintStream(outputStream));
     }
 
     @Test
     void testPrintShortStats() {
-        classifier.classifyData(lines);
         String expectedRes = """
                     Count of strings: %d
                     Count of integers: %d
@@ -37,7 +37,6 @@ public class StatisticsPrinterTest {
 
     @Test
     void testPrintFullStats() {
-        classifier.classifyData(lines);
         String expectedRes = """
                     Count of strings: %d, Max length: %d, Min length: %d.
                     Count of integers: %d, Sum: %d, Max: %d, Min: %d.

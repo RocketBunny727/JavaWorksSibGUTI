@@ -1,6 +1,5 @@
 package org.example;
 
-import java.io.IOException;
 import java.nio.file.Path;
 import java.util.List;
 
@@ -10,7 +9,11 @@ public class DataProcessor {
     private final DataClassifier classifier;
     private final StatisticsPrinter printer;
 
-    public DataProcessor(ArgumentParser parser, IFileService fileService, DataClassifier classifier, StatisticsPrinter printer) {
+    public DataProcessor(
+            ArgumentParser parser,
+            IFileService fileService,
+            DataClassifier classifier,
+            StatisticsPrinter printer) {
         this.parser = parser;
         this.fileService = fileService;
         this.classifier = classifier;

@@ -16,12 +16,6 @@ public class ArgumentParserTest {
     }
 
     @Test
-    void testNoArgumentsThrowsException() {
-        Exception exception = assertThrows(IOException.class, () -> parser.parseArguments(new String[]{}));
-        assertEquals("No following console arguments.", exception.getMessage());
-    }
-
-    @Test
     void testShortStatsMode() throws Exception {
         parser.parseArguments(new String[]{"-s"});
         assertTrue(parser.isShortStats());

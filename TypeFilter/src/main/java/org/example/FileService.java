@@ -5,7 +5,7 @@ import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 
-class FileService implements IFileService {
+public class FileService implements IFileService {
     public List<String> readFile(Path path) {
         List<String> lines = new ArrayList<>();
         try (BufferedReader reader = new BufferedReader(new FileReader(path.toString()))) {
