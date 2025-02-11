@@ -35,52 +35,52 @@ public class DataClassifier {
         try {
             int intValue = Integer.parseInt(line);
 
-            intCount++;
-            intSum += intValue;
-            minInt = Math.min(minInt, intValue);
-            maxInt = Math.max(maxInt, intValue);
+            this.intCount++;
+            this.intSum += intValue;
+            this.minInt = Math.min(minInt, intValue);
+            this.maxInt = Math.max(maxInt, intValue);
 
-            integers.add(line);
+            this.integers.add(line);
             return;
         } catch (NumberFormatException ignored) {}
 
         try {
             double floatValue = Double.parseDouble(line);
 
-            floatCount++;
-            floatSum += floatValue;
-            minFloat = Math.min(minFloat, floatValue);
-            maxFloat = Math.max(maxFloat, floatValue);
+            this.floatCount++;
+            this.floatSum += floatValue;
+            this.minFloat = Math.min(minFloat, floatValue);
+            this.maxFloat = Math.max(maxFloat, floatValue);
 
             floats.add(line);
             return;
         } catch (NumberFormatException ignored) {}
 
-        stringCount++;
+        this.stringCount++;
         int length = line.length();
-        minStringLength = Math.min(minStringLength, length);
-        maxStringLength = Math.max(maxStringLength, length);
+        this.minStringLength = Math.min(this.minStringLength, length);
+        this.maxStringLength = Math.max(this.maxStringLength, length);
 
-        strings.add(line);
+        this.strings.add(line);
     }
 
-    public List<String> getIntegers() { return integers; }
-    public List<String> getFloats() { return floats; }
-    public List<String> getStrings() { return strings; }
+    public List<String> getIntegers() { return this.integers; }
+    public List<String> getFloats() { return this.floats; }
+    public List<String> getStrings() { return this.strings; }
 
-    public int getIntCount() { return intCount; }
-    public int getFloatCount() { return floatCount; }
-    public int getStringCount() { return stringCount; }
+    public int getIntCount() { return this.intCount; }
+    public int getFloatCount() { return this.floatCount; }
+    public int getStringCount() { return this.stringCount; }
 
-    public long getIntSum() { return intSum; }
-    public double getFloatSum() { return floatSum; }
+    public long getIntSum() { return this.intSum; }
+    public double getFloatSum() { return this.floatSum; }
 
-    public int getMinInt() { return intCount > 0 ? minInt : 0; }
-    public int getMaxInt() { return intCount > 0 ? maxInt : 0; }
+    public int getMinInt() { return this.intCount > 0 ? this.minInt : 0; }
+    public int getMaxInt() { return this.intCount > 0 ? this.maxInt : 0; }
 
-    public double getMinFloat() { return floatCount > 0 ? minFloat : 0; }
-    public double getMaxFloat() { return floatCount > 0 ? maxFloat : 0; }
+    public double getMinFloat() { return this.floatCount > 0 ? this.minFloat : 0; }
+    public double getMaxFloat() { return this.floatCount > 0 ? this.maxFloat : 0; }
 
-    public int getMinStringLength() { return stringCount > 0 ? minStringLength : 0; }
-    public int getMaxStringLength() { return stringCount > 0 ? maxStringLength : 0; }
+    public int getMinStringLength() { return this.stringCount > 0 ? this.minStringLength : 0; }
+    public int getMaxStringLength() { return this.stringCount > 0 ? this.maxStringLength : 0; }
 }
