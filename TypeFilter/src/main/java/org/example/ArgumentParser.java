@@ -116,6 +116,10 @@ public class ArgumentParser {
         return prefix;
     }
 
+    public boolean isPrefixMode() {
+        return isPrefixMode;
+    }
+
     public boolean isAppendMode() {
         return appendMode;
     }

@@ -38,6 +38,6 @@ public class DataProcessor {
         }
 
         System.out.println("Processing complete.");
-        printer.printStats(parser.isFullStats(), classifier);
+        printer.printStats(parser.isShortStats(), parser.isFullStats(), classifier);
     }
 }

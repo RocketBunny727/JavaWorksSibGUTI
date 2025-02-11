@@ -1,7 +1,7 @@
 package org.example;
 
 public class StatisticsPrinter {
-    public void printStats(boolean isFullStats, DataClassifier classifier) {
+    public void printStats(boolean isShortStats, boolean isFullStats, DataClassifier classifier) {
         String result;
 
         if (isFullStats) {
@@ -13,7 +13,7 @@ public class StatisticsPrinter {
                     classifier.getIntCount(), classifier.getIntSum(), classifier.getMaxInt(), classifier.getMinInt(),
                     classifier.getFloatCount(), classifier.getFloatSum(), classifier.getMaxFloat(), classifier.getMinFloat());
             System.out.println(result);
-        } else {
+        } else if (isShortStats){
             result = """
                     Count of strings: %d
                     Count of integers: %d
