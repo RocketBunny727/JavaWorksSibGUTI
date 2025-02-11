@@ -31,16 +31,16 @@ public class DataProcessor {
         String outputPath = parser.getOutputPath().toString() + "/" + parser.getPrefix();
 
         if (!classifier.getIntegers().isEmpty()) {
-            fileService.writeFile(outputPath + "integers.txt", classifier.getIntegers(), parser.isAppendMode());
+            fileService.writeFile(outputPath + "integers.txt", classifier.getIntegers(), parser.getIsAppendMode());
         }
         if (!classifier.getFloats().isEmpty()) {
-            fileService.writeFile(outputPath + "floats.txt", classifier.getFloats(), parser.isAppendMode());
+            fileService.writeFile(outputPath + "floats.txt", classifier.getFloats(), parser.getIsAppendMode());
         }
         if (!classifier.getStrings().isEmpty()) {
-            fileService.writeFile(outputPath + "strings.txt", classifier.getStrings(), parser.isAppendMode());
+            fileService.writeFile(outputPath + "strings.txt", classifier.getStrings(), parser.getIsAppendMode());
         }
 
         System.out.println("Processing complete.");
-        printer.printStats(parser.isShortStats(), parser.isFullStats(), classifier);
+        printer.printStats(parser.getIsShortStats(), parser.getIsFullStats(), classifier);
     }
 }

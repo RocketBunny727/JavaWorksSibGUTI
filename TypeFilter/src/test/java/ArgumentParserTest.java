@@ -18,15 +18,15 @@ public class ArgumentParserTest {
     @Test
     void testShortStatsMode() throws Exception {
         parser.parseArguments(new String[]{"-s"});
-        assertTrue(parser.isShortStats());
-        assertFalse(parser.isFullStats());
+        assertTrue(parser.getIsShortStats());
+        assertFalse(parser.getIsFullStats());
     }
 
     @Test
     void testFullStatsMode() throws Exception {
         parser.parseArguments(new String[]{"-f"});
-        assertTrue(parser.isFullStats());
-        assertFalse(parser.isShortStats());
+        assertTrue(parser.getIsFullStats());
+        assertFalse(parser.getIsShortStats());
     }
 
     @Test
@@ -50,7 +50,7 @@ public class ArgumentParserTest {
     @Test
     void testAppendMode() throws Exception {
         parser.parseArguments(new String[]{"-a"});
-        assertTrue(parser.isAppendMode());
+        assertTrue(parser.getIsAppendMode());
     }
 
     @Test

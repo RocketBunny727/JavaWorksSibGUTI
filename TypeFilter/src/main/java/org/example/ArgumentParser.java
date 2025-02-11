@@ -116,19 +116,19 @@ public class ArgumentParser {
         return prefix;
     }
 
-    public boolean isPrefixMode() {
+    public boolean getIsPrefixMode() {
         return isPrefixMode;
     }
 
-    public boolean isAppendMode() {
+    public boolean getIsAppendMode() {
         return appendMode;
     }
 
-    public boolean isShortStats() {
+    public boolean getIsShortStats() {
         return isShortStats;
     }
 
-    public boolean isFullStats() {
+    public boolean getIsFullStats() {
         return isFullStats;
     }
 }
