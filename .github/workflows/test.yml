@@ -16,10 +16,9 @@ jobs:
           distribution: 'temurin'
           java-version: '23'
 
-      - name: Make gradlew usage
-        run: chmod +x gradlew
-        working-directory: TypeFilter
+      - name: Install Gradle
+        uses: gradle/gradle-build-action@v2
 
-      - name: Запуск тестов для TypeFilter
-        run: ./gradlew test
+      - name: Run tests for TypeFilter
+        run: gradle test
         working-directory: TypeFilter
