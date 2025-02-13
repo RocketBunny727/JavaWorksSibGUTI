@@ -27,10 +27,17 @@ public class Calculator implements ICalculator, Runnable {
         timer.start();
 
         for (int i = 1; i <= calculationLength; i++) {
-            System.out.printf("\rThread %d [%d]: %s",
+//            System.out.printf("\rThread %d [%d]: %s",
+//                    threadNumber,
+//                    Thread.currentThread().threadId(),
+//                    progressBar.showProgress(i));
+
+            String output = "\rThread %d [%d]: %s".formatted(
                     threadNumber,
                     Thread.currentThread().threadId(),
                     progressBar.showProgress(i));
+
+
 
             try {
                 Thread.sleep(complexity);

@@ -1,0 +1,21 @@
+name: Java CI for Multiple Projects
+
+on: [push, pull_request]
+
+jobs:
+  test-TypeFilter:
+    name: Test TypeFilter
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout репозиторий
+        uses: actions/checkout@v3
+
+      - name: Установка JDK
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: '23'
+
+      - name: Запуск тестов для TypeFilter (Gradle)
+        working-directory: TypeFilter
+        run: ./gradlew test
