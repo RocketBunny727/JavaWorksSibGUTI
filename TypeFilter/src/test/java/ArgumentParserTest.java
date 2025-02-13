@@ -67,11 +67,11 @@ public class ArgumentParserTest {
 
     @Test
     void testFilePathsAreParsed() throws Exception {
-        parser.parseArguments(new String[]{"files/inputFile.txt", "files/inputFile2.txt"});
+        parser.parseArguments(new String[]{"src/test/resources/test.txt", "src/test/resources/parseThisFile.txt"});
         Set<Path> inputPaths = parser.getInputPaths();
 
         assertEquals(2, inputPaths.size());
-        assertTrue(inputPaths.contains(Paths.get("files/inputFile.txt")));
-        assertTrue(inputPaths.contains(Paths.get("files/inputFile2.txt")));
+        assertTrue(inputPaths.contains(Paths.get("src/test/resources/test.txt")));
+        assertTrue(inputPaths.contains(Paths.get("src/test/resources/parseThisFile.txt")));
     }
 }
