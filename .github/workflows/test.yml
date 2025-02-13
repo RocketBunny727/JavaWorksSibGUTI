@@ -7,15 +7,19 @@ jobs:
     name: Test TypeFilter
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout репозиторий
+      - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: Установка JDK
+      - name: Install JDK
         uses: actions/setup-java@v3
         with:
           distribution: 'temurin'
           java-version: '23'
 
-      - name: Запуск тестов для TypeFilter (Gradle)
+      - name: Make gradlew usage
+        run: chmod +x gradlew
         working-directory: TypeFilter
+
+      - name: Запуск тестов для TypeFilter
         run: ./gradlew test
+        working-directory: TypeFilter
