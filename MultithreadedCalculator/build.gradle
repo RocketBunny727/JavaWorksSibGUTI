@@ -1,9 +1,11 @@
 plugins {
     id 'java'
+    id 'application'
 }
 
 group = 'homework2.realise'
 version = '1.0-SNAPSHOT'
+mainClassName = 'homework2.realise.Runner'
 
 repositories {
     mavenCentral()

@@ -4,11 +4,16 @@ public class Calculator implements ICalculator, Runnable {
     private final int threadNumber;
     private final int calculationLength;
     private final int complexity;
+    private final int INDENTATION = 2;
+    private static final Object lock = new Object();
+    private int threadCount;
 
     public Calculator(
+            int threadCount,
             int threadNumber,
             int calculationLength,
             int complexity) {
+        this.threadCount = threadCount;
         this.threadNumber = threadNumber;
         this.calculationLength = calculationLength;
         this.complexity = complexity;
@@ -21,23 +26,19 @@ public class Calculator implements ICalculator, Runnable {
 
     @Override
     public void calculate() {
-        // String posY = "\n".repeat(threadNumber - 1);
         ProgressBar progressBar = new ProgressBar(calculationLength);
         Timer timer = new Timer();
         timer.start();
 
         for (int i = 1; i <= calculationLength; i++) {
-//            System.out.printf("\rThread %d [%d]: %s",
-//                    threadNumber,
-//                    Thread.currentThread().threadId(),
-//                    progressBar.showProgress(i));
-
-            String output = "\rThread %d [%d]: %s".formatted(
-                    threadNumber,
-                    Thread.currentThread().threadId(),
-                    progressBar.showProgress(i));
-
-
+            synchronized (lock) {
+                System.out.println(String.format("\033[%d;1HThread %d [%d]: %s\033[%d;1H",
+                        threadNumber + 1 + INDENTATION,
+                        threadNumber,
+                        Thread.currentThread().threadId(),
+                        progressBar.showProgress(i),
+                        threadCount + 3));
+            }
 
             try {
                 Thread.sleep(complexity);
@@ -47,7 +48,14 @@ public class Calculator implements ICalculator, Runnable {
         }
 
         long elapsedTime = timer.stop();
-        System.out.printf("\rThread %d [%d] completed in %d ms.%n",
-                threadNumber, Thread.currentThread().threadId(), elapsedTime);
+        synchronized (lock) {
+            System.out.println(String.format("\033[%d;1HThread <%d> [%d] completed in %d ms.\033[%d;1H",
+                    threadNumber + 1 + INDENTATION,
+                    threadNumber,
+                    Thread.currentThread().threadId(),
+                    elapsedTime,
+                    threadCount + 3
+            ));
+        }
     }
 }
