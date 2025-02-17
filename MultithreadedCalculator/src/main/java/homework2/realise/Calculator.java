@@ -19,9 +19,7 @@ public class Calculator implements Runnable {
     }
 
     @Override
-    public void run() {
-        this.calculate();
-    }
+    public void run() { this.calculate(); }
 
     public void calculate() {
         IThreadInfoPrinter printer = new Printer(CALCULATION_LENGTH);

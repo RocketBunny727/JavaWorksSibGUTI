@@ -5,7 +5,7 @@ import java.util.List;
 
 public class ThreadsMaker {
     final int CALCULATION_LENGTH;
-    List<Thread> threads = new ArrayList<>();
+    private final List<Thread> threads = new ArrayList<>();
 
     public ThreadsMaker(int CALCULATION_LENGTH) {
         this.CALCULATION_LENGTH = CALCULATION_LENGTH;
