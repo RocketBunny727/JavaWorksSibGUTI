@@ -1,7 +1,9 @@
 package org.example;
 
 public class StatisticsPrinter {
-    public void printStats(boolean isShortStats, boolean isFullStats, DataClassifier classifier) {
+    public void printStats(boolean isShortStats,
+                           boolean isFullStats,
+                           DataClassifier classifier) {
         String result;
 
         if (isFullStats) {

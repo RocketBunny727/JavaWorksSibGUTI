@@ -27,7 +27,6 @@ public class FileService implements IFileService {
             }
         } catch (IOException e) {
             System.err.println("Write to file error: " + filePath);
-            e.printStackTrace();
         }
     }
 }

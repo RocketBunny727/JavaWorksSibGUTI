@@ -18,15 +18,15 @@ public class ArgumentParserTest {
     @Test
     void testShortStatsMode() throws Exception {
         parser.parseArguments(new String[]{"-s"});
-        assertTrue(parser.isShortStats());
-        assertFalse(parser.isFullStats());
+        assertTrue(parser.getIsShortStats());
+        assertFalse(parser.getIsFullStats());
     }
 
     @Test
     void testFullStatsMode() throws Exception {
         parser.parseArguments(new String[]{"-f"});
-        assertTrue(parser.isFullStats());
-        assertFalse(parser.isShortStats());
+        assertTrue(parser.getIsFullStats());
+        assertFalse(parser.getIsShortStats());
     }
 
     @Test
@@ -50,7 +50,7 @@ public class ArgumentParserTest {
     @Test
     void testAppendMode() throws Exception {
         parser.parseArguments(new String[]{"-a"});
-        assertTrue(parser.isAppendMode());
+        assertTrue(parser.getIsAppendMode());
     }
 
     @Test
@@ -67,11 +67,11 @@ public class ArgumentParserTest {
 
     @Test
     void testFilePathsAreParsed() throws Exception {
-        parser.parseArguments(new String[]{"files/inputFile.txt", "files/inputFile2.txt"});
+        parser.parseArguments(new String[]{"src/test/resources/test.txt", "src/test/resources/parseThisFile.txt"});
         Set<Path> inputPaths = parser.getInputPaths();
 
         assertEquals(2, inputPaths.size());
-        assertTrue(inputPaths.contains(Paths.get("files/inputFile.txt")));
-        assertTrue(inputPaths.contains(Paths.get("files/inputFile2.txt")));
+        assertTrue(inputPaths.contains(Paths.get("src/test/resources/test.txt")));
+        assertTrue(inputPaths.contains(Paths.get("src/test/resources/parseThisFile.txt")));
     }
 }

@@ -21,26 +21,26 @@ public class DataProcessor {
     }
 
     public void process(String[] args) throws Exception {
-        parser.parseArguments(args);
+        this.parser.parseArguments(args);
 
-        for (Path inputPath : parser.getInputPaths()) {
-            List<String> lines = fileService.readFile(inputPath);
-            classifier.classifyData(lines);
+        for (Path inputPath : this.parser.getInputPaths()) {
+            List<String> lines = this.fileService.readFile(inputPath);
+            this.classifier.classifyData(lines);
         }
 
-        String outputPath = parser.getOutputPath().toString() + "/" + parser.getPrefix();
+        String outputPath = this.parser.getOutputPath().toString() + "/" + this.parser.getPrefix();
 
-        if (!classifier.getIntegers().isEmpty()) {
-            fileService.writeFile(outputPath + "integers.txt", classifier.getIntegers(), parser.isAppendMode());
+        if (!this.classifier.getIntegers().isEmpty()) {
+            this.fileService.writeFile(outputPath + "integers.txt", this.classifier.getIntegers(), this.parser.getIsAppendMode());
         }
-        if (!classifier.getFloats().isEmpty()) {
-            fileService.writeFile(outputPath + "floats.txt", classifier.getFloats(), parser.isAppendMode());
+        if (!this.classifier.getFloats().isEmpty()) {
+            this.fileService.writeFile(outputPath + "floats.txt", this.classifier.getFloats(), this.parser.getIsAppendMode());
         }
-        if (!classifier.getStrings().isEmpty()) {
-            fileService.writeFile(outputPath + "strings.txt", classifier.getStrings(), parser.isAppendMode());
+        if (!this.classifier.getStrings().isEmpty()) {
+            this.fileService.writeFile(outputPath + "strings.txt", this.classifier.getStrings(), this.parser.getIsAppendMode());
         }
 
         System.out.println("Processing complete.");
-        printer.printStats(parser.isShortStats(), parser.isFullStats(), classifier);
+        this.printer.printStats(this.parser.getIsShortStats(), this.parser.getIsFullStats(), this.classifier);
     }
 }

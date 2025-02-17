@@ -104,31 +104,11 @@ public class ArgumentParser {
         };
     }
 
-    public Set<Path> getInputPaths() {
-        return inputPaths;
-    }
-
-    public Path getOutputPath() {
-        return outputPath;
-    }
-
-    public String getPrefix() {
-        return prefix;
-    }
-
-    public boolean isPrefixMode() {
-        return isPrefixMode;
-    }
-
-    public boolean isAppendMode() {
-        return appendMode;
-    }
-
-    public boolean isShortStats() {
-        return isShortStats;
-    }
-
-    public boolean isFullStats() {
-        return isFullStats;
-    }
+    public Set<Path> getInputPaths() { return this.inputPaths; }
+    public Path getOutputPath() { return this.outputPath; }
+    public String getPrefix() { return this.prefix; }
+    public boolean getIsPrefixMode() { return this.isPrefixMode; }
+    public boolean getIsAppendMode() { return this.appendMode; }
+    public boolean getIsShortStats() { return this.isShortStats; }
+    public boolean getIsFullStats() { return this.isFullStats; }
 }

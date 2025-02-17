@@ -1,0 +1,28 @@
+name: Java CI for JavaWorksSibGUTI
+
+on: [push, pull_request]
+
+jobs:
+  test-Projects:
+    name: Test Repository Projects
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Install JDK
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: '23'
+
+      - name: Install Gradle
+        uses: gradle/gradle-build-action@v2
+
+      - name: Run tests for TypeFilter
+        run: gradle test
+        working-directory: TypeFilter
+
+      - name: Run tests for MultithreadedCalculator
+        run: gradle test
+        working-directory: MultithreadedCalculator
