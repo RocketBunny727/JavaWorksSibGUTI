@@ -31,7 +31,7 @@ public class PrinterTest {
 
         String actualOutput = outputStream.toString()
                 .replaceAll("\033\\[\\d+;1H", "")
-                .replaceAll("\\[\\d+\\]", "[ID]")
+                .replaceAll("\\[\\d+]", "[ID]")
                 .trim();
 
         String expectedOutput = String.join(System.lineSeparator(),
@@ -52,8 +52,8 @@ public class PrinterTest {
 
         String actualOutput = outputStream.toString()
                 .replaceAll("\033\\[\\d+;1H", "")
-                .replaceAll("\\[\\d+\\]", "[ID]")
-                .replaceAll("\\' in '\\d+\\' ms'", "")
+                .replaceAll("\\[\\d+]", "[ID]")
+                .replaceAll("' in '\\d+' ms'", "")
                 .trim();
 
         String expectedOutput = String.join(System.lineSeparator(),

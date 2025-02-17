@@ -1,10 +1,10 @@
-name: Java CI for Multiple Projects
+name: Java CI for JavaWorksSibGUTI
 
 on: [push, pull_request]
 
 jobs:
-  test-TypeFilter:
-    name: Test TypeFilter
+  test-Projects:
+    name: Test Repository Projects
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -22,3 +22,7 @@ jobs:
       - name: Run tests for TypeFilter
         run: gradle test
         working-directory: TypeFilter
+
+      - name: Run tests for MultithreadedCalculator
+        run: gradle test
+        working-directory: MultithreadedCalculator
