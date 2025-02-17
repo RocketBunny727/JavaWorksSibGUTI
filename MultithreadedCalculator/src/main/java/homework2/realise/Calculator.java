@@ -1,22 +1,21 @@
 package homework2.realise;
 
-public class Calculator implements ICalculator, Runnable {
-    private final int threadNumber;
-    private final int calculationLength;
-    private final int complexity;
-    private final int INDENTATION = 2;
+public class Calculator implements Runnable {
+    private final int THREAD_COUNT;
+    private final int THREAD_NUMBER;
+    private final int CALCULATION_LENGTH;
+    private final int COMPLEXITY;
     private static final Object lock = new Object();
-    private int threadCount;
 
     public Calculator(
             int threadCount,
             int threadNumber,
             int calculationLength,
             int complexity) {
-        this.threadCount = threadCount;
-        this.threadNumber = threadNumber;
-        this.calculationLength = calculationLength;
-        this.complexity = complexity;
+        this.THREAD_COUNT = threadCount;
+        this.THREAD_NUMBER = threadNumber;
+        this.CALCULATION_LENGTH = calculationLength;
+        this.COMPLEXITY = complexity;
     }
 
     @Override
@@ -24,24 +23,19 @@ public class Calculator implements ICalculator, Runnable {
         this.calculate();
     }
 
-    @Override
     public void calculate() {
-        ProgressBar progressBar = new ProgressBar(calculationLength);
+        IThreadInfoPrinter printer = new Printer(CALCULATION_LENGTH);
         Timer timer = new Timer();
         timer.start();
 
-        for (int i = 1; i <= calculationLength; i++) {
+        final int INDENTATION = 2;
+        for (int i = 1; i <= CALCULATION_LENGTH; i++) {
             synchronized (lock) {
-                System.out.println(String.format("\033[%d;1HThread %d [%d]: %s\033[%d;1H",
-                        threadNumber + 1 + INDENTATION,
-                        threadNumber,
-                        Thread.currentThread().threadId(),
-                        progressBar.showProgress(i),
-                        threadCount + 3));
+                printer.printRunThreadInfo(THREAD_NUMBER + 1 + INDENTATION, THREAD_NUMBER, i, THREAD_COUNT + 3);
             }
 
             try {
-                Thread.sleep(complexity);
+                Thread.sleep(COMPLEXITY);
             } catch (InterruptedException e) {
                 Thread.currentThread().interrupt();
             }
@@ -49,13 +43,7 @@ public class Calculator implements ICalculator, Runnable {
 
         long elapsedTime = timer.stop();
         synchronized (lock) {
-            System.out.println(String.format("\033[%d;1HThread <%d> [%d] completed in %d ms.\033[%d;1H",
-                    threadNumber + 1 + INDENTATION,
-                    threadNumber,
-                    Thread.currentThread().threadId(),
-                    elapsedTime,
-                    threadCount + 3
-            ));
+            printer.printClosedThreadInfo(THREAD_NUMBER + 1 + INDENTATION, THREAD_NUMBER, THREAD_COUNT + 3, elapsedTime);
         }
     }
 }
