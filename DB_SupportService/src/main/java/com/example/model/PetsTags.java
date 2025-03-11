@@ -12,13 +12,15 @@ import lombok.*;
 public class PetsTags {
 
     @EmbeddedId
-    PetsTagsId petsTagsId;
+    private PetsTagsId petsTagsId;
 
     @ManyToOne
+    @MapsId("pet_id")
     @JoinColumn(name = "pet_id", referencedColumnName = "id", nullable = false)
     private Pet pet;
 
     @ManyToOne
+    @MapsId("tag_id")
     @JoinColumn(name = "tag_id", referencedColumnName = "id", nullable = false)
     private Tag tag;
 }

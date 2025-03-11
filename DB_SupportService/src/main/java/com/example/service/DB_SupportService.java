@@ -16,20 +16,28 @@ public class DB_SupportService {
         this.petRepository = petRepository;
     }
 
-    public List<Pet> getAllPets() {
-        return petRepository.findAll();
+    public Pet createPet(Pet pet) {
+        return petRepository.save(pet);
     }
 
     public Optional<Pet> getPetById(Long id) {
         return petRepository.findById(id);
     }
 
-    public Pet savePet(Pet pet) {
-        return petRepository.save(pet);
+    public List<Pet> getAllPets() {
+        return petRepository.findAll();
     }
 
-    public Pet updatePet(Pet pet) {
-        return petRepository.save(pet);
+    public Pet updatePet(Long id, Pet updatedPet) {
+        return petRepository.findById(id)
+                .map(existingPet -> {
+                    existingPet.setName(updatedPet.getName());
+                    existingPet.setCategory(updatedPet.getCategory());
+                    existingPet.setTags(updatedPet.getTags());
+                    existingPet.setStatus(updatedPet.getStatus());
+                    return petRepository.save(existingPet);
+                })
+                .orElseThrow(() -> new RuntimeException("Питомец с ID " + id + " не найден"));
     }
 
     public void deletePet(Long id) {

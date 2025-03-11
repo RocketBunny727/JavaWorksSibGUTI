@@ -1,10 +1,7 @@
 package com.example.model;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 @Entity
 @Table(name = "categories")
@@ -18,5 +15,5 @@ public class Category {
     private Long id;
 
     @Column(nullable = false)
-    private String name;
+    private String category_name;
 }
