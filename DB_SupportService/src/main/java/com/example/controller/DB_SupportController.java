@@ -37,10 +37,10 @@ public class DB_SupportController {
                 .orElseGet(() -> ResponseEntity.notFound().build());
     }
 
-    @PutMapping("/{pet_id}")
-    public ResponseEntity<Pet> updatePet(@PathVariable long pet_id, @RequestBody Pet pet) {
+    @PutMapping()
+    public ResponseEntity<Pet> updatePet(@RequestBody Pet pet) {
         try {
-            Pet updatedPet = service.updatePet(pet_id, pet);
+            Pet updatedPet = service.updatePet(pet);
             return ResponseEntity.ok(updatedPet);
         } catch (RuntimeException e) {
             return ResponseEntity.notFound().build();
