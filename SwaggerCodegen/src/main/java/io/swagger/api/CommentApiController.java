@@ -22,7 +22,7 @@ public class CommentApiController {
     }
 
     @GetMapping
-    public ResponseEntity<List<Comment>> getComments() {
+    public ResponseEntity<List<Comment>> apiV1AllCommentsGet() {
         List<Comment> comments = commentService.getComments();
         return ResponseEntity.ok(comments);
     }
@@ -35,60 +35,24 @@ public class CommentApiController {
     }
 
     @PostMapping
-    public ResponseEntity<Comment> postComment(@Valid @RequestBody CommentRequest body) {
+    public ResponseEntity<Comment> apiV1CommentPost(@Valid @RequestBody CommentRequest body) {
         Comment comment = new Comment();
         comment.setContent(body.getContent());
+        comment.setAuthor(body.getAuthor());
         comment.setDate(body.getDate());
 
-        User author = body.getAuthor();
-        if (author == null || author.getName() == null || author.getName().isEmpty()) {
-            throw new InvalidAuthorException("Author information is invalid or missing.");
-        }
-
-        Optional<User> existingUser = commentService.findUserByName(author.getName());
-        if (existingUser.isPresent()) {
-            comment.setAuthor(existingUser.get());
-        } else {
-            User newUser = new User();
-            newUser.setName(author.getName());
-            commentService.addNewUser(newUser);
-            comment.setAuthor(newUser);
-        }
-
-        Comment savedComment = commentService.createComment(comment);
-        return ResponseEntity.status(200).body(savedComment);
+        return ResponseEntity.ok(commentService.createComment(comment));
     }
 
     @PutMapping("/{id}")
     public ResponseEntity<Comment> apiV1CommentsIdPut(@PathVariable("id") Long id, @Valid @RequestBody CommentRequest body) {
-        return commentService.getComment(id).map(existingComment -> {
-            existingComment.setContent(body.getContent());
-            existingComment.setDate(body.getDate());
+        Comment updatedComment = new Comment();
+        updatedComment.setId(id);
+        updatedComment.setContent(body.getContent());
+        updatedComment.setAuthor(body.getAuthor());
+        updatedComment.setDate(body.getDate());
 
-            User author = body.getAuthor();
-            if (author != null) {
-                if (author.getName() == null || author.getName().isEmpty()) {
-                    throw new InvalidAuthorException("Author information is invalid or missing.");
-                }
-
-                Optional<User> existingUser = commentService.findUserByName(author.getName());
-                if (existingUser.isPresent()) {
-                    existingComment.setAuthor(existingUser.get());
-                } else {
-                    User newUser = new User();
-                    newUser.setName(author.getName());
-                    commentService.addNewUser(newUser);
-                    existingComment.setAuthor(newUser);
-                }
-            }
-
-            try {
-                Comment updatedComment = commentService.updateComment(existingComment);
-                return ResponseEntity.ok(updatedComment);
-            } catch (IllegalArgumentException e) {
-                return ResponseEntity.badRequest().body(new Comment());
-            }
-        }).orElse(ResponseEntity.notFound().build());
+        return ResponseEntity.ok(commentService.updateComment(updatedComment));
     }
 
 

@@ -23,11 +23,14 @@ public class CommentService {
     }
 
     public Comment createComment(Comment comment) {
+
+        log.info("createComment");
+
         if (comment.getAuthor() != null) {
             userRepository.findByName(comment.getAuthor().getName())
                     .ifPresentOrElse(
                             comment::setAuthor,
-                            () -> commentRepository.save(comment)
+                            () -> comment.setAuthor(userRepository.save(comment.getAuthor()))
                     );
         }
 
@@ -43,6 +46,9 @@ public class CommentService {
     }
 
     public Comment updateComment(Comment updatedComment) {
+
+        log.info("updateComment");
+
         commentRepository.findById(updatedComment.getId())
                 .orElseThrow(() -> new RuntimeException("Comment with ID: " + updatedComment.getId() + " not found"));
 
@@ -50,23 +56,17 @@ public class CommentService {
             userRepository.findByName(updatedComment.getAuthor().getName())
                     .ifPresentOrElse(
                             updatedComment::setAuthor,
-                            () -> commentRepository.save(updatedComment)
+                            () -> updatedComment.setAuthor(userRepository.save(updatedComment.getAuthor()))
                     );
         }
 
         return commentRepository.save(updatedComment);
     }
 
-
     public void deleteComment(Long id) {
 
-    }
+        log.info("deleteComment");
 
-    public Optional<User> findUserByName(String name) {
-        return userRepository.findByName(name);
-    }
-
-    public User addNewUser(User user) {
-        return userRepository.save(user);
+        commentRepository.deleteById(id);
     }
 }

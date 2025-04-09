@@ -39,7 +39,7 @@ public interface ApiApi {
 
     @Operation(summary = "Delete comment by ID", description = "", tags={  })
     @ApiResponses(value = { 
-        @ApiResponse(responseCode = "200", description = "Comment deleted successfully"),
+        @ApiResponse(responseCode = "204", description = "Comment deleted successfully"),
         
         @ApiResponse(responseCode = "404", description = "Not found"),
         
