@@ -1,0 +1,84 @@
+=================Sign up===================
+
+{
+    "login" : "JamesWal123",
+    "password" : "123456",
+    "userType" : "REGULAR",
+    "customer": {
+        "name": "James Walker",
+        "address": {
+            "city": "Los Angeles",
+            "street": "BroadWay",
+            "number": "256",
+            "zipcode": "569802"
+        }
+    }
+}
+
+===================Log in===================
+
+{
+    "login" : "JamesWal123",
+    "password" : "123456"
+}
+
+================Create order================
+
+{
+  "date": "2025-03-30T14:30:00",
+  "status": "PENDING",
+  "customer": {
+    "name": "James Walker",
+    "address": {
+      "city": "Los Angeles",
+      "street": "BroadWay",
+      "number": "256",
+      "zipcode": "569802"
+    }
+  },
+  "orderDetails": [
+    {
+      "quantity" : {
+        "measurementType" : "QUANTITY_MEASUREMENT",
+        "name" : "item",
+        "symbol" : "items",
+        "value" : 1
+      },
+      "taxStatus": "TAXABLE",
+      "item": {
+        "description": "Apple IPhone 16 Pro",
+        "shippingWeight" : {
+            "measurementType": "WEIGHT_MEASUREMENT",
+            "name": "grams",
+            "symbol": "g",
+            "value": 525
+        }
+      }
+    },
+    {
+      "quantity" : {
+        "measurementType" : "QUANTITY_MEASUREMENT",
+        "name" : "item",
+        "symbol" : "items",
+        "value" : 1
+      },
+      "taxStatus": "TAXABLE",
+      "item": {
+        "description": "Sony PlayStation 5 Pro",
+        "shippingWeight" : {
+            "measurementType": "WEIGHT_MEASUREMENT",
+            "name": "kilograms",
+            "symbol": "kg",
+            "value": 5.725
+        }
+      }
+    }
+  ],
+  "payments": [
+    {
+      "type": "CASH",
+      "amount": 7499.99,
+      "cashTendered": 7500
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+server:
+  port: 8080
+
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/orders_customers_db
+    username: postgres
+    password: 471979
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        format_sql: true
+        show_sql: true
+
+  liquibase:
+    change-log: classpath:db/change-log/db.change-log.xml
+
+jwt:
+  secret: super-secret-key-for-jwt-signature-1234567890
+  expiration: 7200000
